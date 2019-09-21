@@ -4,7 +4,7 @@
 ![截图](screen/001.jpg)
 ![截图](screen/002.jpg)
 
-## 发送的通知数据结构
+## 通知数据结构
 
 ```json
 {
@@ -23,7 +23,7 @@
     "android.progressIndeterminate":false,
     "android.remoteInputHistory":null,
     "gameDndOn":false,
-    "com.huawei.isIntentProtectedApp":true,
+    "com.huawei.isIntentProtectedApp":true
 }
 ```
 
@@ -35,4 +35,27 @@ $input = file_get_contents("php://input");
 $data = json_decode($input, true);
 echo json_encode($data, JSON_PRETTY_PRINT);
 
+```
+
+返回结果
+
+```json
+{
+    "package":"com.tencent.mm",
+    "android.title":"MaxU",
+    "android.reduced.images":true,
+    "android.subText":null,
+    "android.showChronometer":false,
+    "toSingleLine":false,
+    "android.icon":2130839882,
+    "android.text":"[14条]MaxU: 0.32163",
+    "android.progress":0,
+    "android.progressMax":0,
+    "android.showWhen":true,
+    "android.infoText":null,
+    "android.progressIndeterminate":false,
+    "android.remoteInputHistory":null,
+    "gameDndOn":false,
+    "com.huawei.isIntentProtectedApp":true
+}
 ```
