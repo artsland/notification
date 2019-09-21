@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Notification</string>
+    <string name="btn_open_service">启动通知接收服务</string>
+    <string name="btn_close_service">关闭通知接收服务</string>
+    <string name="status_closed">服务未开启</string>
+    <string name="status_opened">服务已开启</string>
+    <string name="url_placeholder">https://jiqiwuyu.com/api/events</string>
+    <string name="url_default">https://jiqiwuyu.com/api/events</string>
+    <string name="url_label">通知事件接收地址: </string>
+    <string name="url_key">notify_hook_url</string>
+    <string name="hook_name">通知服务HOOK</string>
+</resources>
