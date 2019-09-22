@@ -90,6 +90,15 @@ class MainActivity : AppCompatActivity() {
         packageManager.setComponentEnabledSetting( com, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP )
     }
 
+    /**
+     * 解绑服务
+     */
+    private fun requestUnbind() {
+        val serviceClass = HookNotificationService::class.java
+        val com = ComponentName(this, serviceClass)
+        packageManager.setComponentEnabledSetting( com, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP )
+    }
+
 
     /**
      * 启动服务
@@ -155,11 +164,15 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * 关闭服务
+     * todo
+     *  - 服务无法关闭 BUG
      */
     fun stopServiceClick( view: View ) {
 
         // 关闭服务操作
         if ( this.serviceIsRunning() ) {
+
+            this.requestUnbind();
 
             val serviceClass = HookNotificationService::class.java
             val serviceIntent = Intent(applicationContext, serviceClass)

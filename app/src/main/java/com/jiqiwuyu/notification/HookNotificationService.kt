@@ -46,7 +46,7 @@ class HookNotificationService : NotificationListenerService() {
      *
      * Todo:
      *   - 1. 微信屏蔽了通知服务监听？ 启动微信时，监听不到消息
-     *   - 2. 进程被杀死后，此方法失效？Fiexed
+     *   - 2. 进程被杀死后，此方法失效？Fixed
      */
     override  fun onNotificationPosted( sbn: StatusBarNotification  ){
 
