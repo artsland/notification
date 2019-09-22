@@ -21,7 +21,7 @@ class HookNotificationService : NotificationListenerService() {
     /**
      * 发送数据到绑定地址
      */
-    fun postData( url:String, body: JSONObject){
+    private fun postData( url:String, body: JSONObject){
         val httpAsync = url
             .httpPost()
             .jsonBody(body.toString())
@@ -46,7 +46,7 @@ class HookNotificationService : NotificationListenerService() {
      *
      * Todo:
      *   - 1. 微信屏蔽了通知服务监听？ 启动微信时，监听不到消息
-     *   - 2. 进程被杀死后，此方法失效？
+     *   - 2. 进程被杀死后，此方法失效？Fiexed
      */
     override  fun onNotificationPosted( sbn: StatusBarNotification  ){
 

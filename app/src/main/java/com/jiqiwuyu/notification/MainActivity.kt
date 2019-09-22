@@ -14,6 +14,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import androidx.core.content.ContextCompat
 import android.app.ActivityManager;
+import android.content.pm.PackageManager
 import android.preference.PreferenceManager
 import android.util.Log
 import android.service.notification.NotificationListenerService
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * 检查是否有通知访问权限
      */
-    fun checkPermistion():Boolean {
+    private fun checkPermistion():Boolean {
 
         val pkgName:String = getPackageName()
         val setting = Settings.Secure.getString(contentResolver, "enabled_notification_listeners");
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * 打开通知权限配置界面
      */
-    fun openSetting():Boolean {
+    private fun openSetting():Boolean {
 
         try {
             val intent: Intent = Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * 检查服务是否正在运行
      */
-    fun serviceIsRunning():Boolean {
+    private fun serviceIsRunning():Boolean {
         val manager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         for (service in manager.getRunningServices(Integer.MAX_VALUE)) {
             if ("com.jiqiwuyu.notification.HookNotificationService" == service.service.className) {
@@ -77,6 +78,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return false
+    }
+
+    /**
+     * 重新绑定服务
+     */
+    private fun requestRebind() {
+        val serviceClass = HookNotificationService::class.java
+        val com = ComponentName(this, serviceClass)
+        packageManager.setComponentEnabledSetting( com, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP )
+        packageManager.setComponentEnabledSetting( com, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP )
     }
 
 
@@ -116,7 +127,9 @@ class MainActivity : AppCompatActivity() {
             val serviceClass = HookNotificationService::class.java
             val serviceIntent = Intent(applicationContext, serviceClass)
             startService(serviceIntent)
-            NotificationListenerService.requestRebind(ComponentName(this, serviceClass))
+
+            // 重新绑定服务
+            this.requestRebind()
 
             if ( !this.serviceIsRunning() ) {
                 Toast.makeText(applicationContext, "服务启动失败", Toast.LENGTH_SHORT).show();
