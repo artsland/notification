@@ -56,6 +56,43 @@ echo json_encode($data, JSON_PRETTY_PRINT);
     "android.progressIndeterminate":false,
     "android.remoteInputHistory":null,
     "gameDndOn":false,
-    "com.huawei.isIntentProtectedApp":true
+    "com.huawei.isIntentProtectedApp":true,
+    "notifications":[
+        {
+          "package":"com.tencent.mm",
+           "android.title":"MaxU",
+           "android.reduced.images":true,
+           "android.subText":null,
+           "android.showChronometer":false,
+           "toSingleLine":false,
+           "android.icon":2130839882,
+           "android.text":"[14条]MaxU: 0.32163",
+           "android.progress":0,
+           "android.progressMax":0,
+           "android.showWhen":true,
+           "android.infoText":null,
+           "android.progressIndeterminate":false,
+           "android.remoteInputHistory":null,
+           "gameDndOn":false,
+           "com.huawei.isIntentProtectedApp":true
+        },{
+           "package":"com.tencent.mm",
+           "android.title":"MaxU",
+           "android.reduced.images":true,
+           "android.subText":null,
+           "android.showChronometer":false,
+           "toSingleLine":false,
+           "android.icon":2130839882,
+           "android.text":"[14条]MaxU: 0.32163",
+           "android.progress":0,
+           "android.progressMax":0,
+           "android.showWhen":true,
+           "android.infoText":null,
+           "android.progressIndeterminate":false,
+           "android.remoteInputHistory":null,
+           "gameDndOn":false,
+           "com.huawei.isIntentProtectedApp":true
+        }
+    ]
 }
 ```
